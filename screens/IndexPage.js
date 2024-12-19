@@ -10,7 +10,7 @@ export default function IndexPage({ navigation }) {
     return (
         <View>
 
-            <Button title='EKLE' onPress={addBlogPost} />
+            {/* <Button title='EKLE' onPress={addBlogPost} /> */}
             {/* <Text>IndexPage</Text> */}
             <FlatList
                 data={state}
@@ -42,9 +42,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         borderTopWidth: 1,
-        paddingVertical: 10,
+        paddingVertical: 20,
         paddingHorizontal: 10,
         borderColor: 'gray',
+
     },
     title: {
         fontSize: 18,

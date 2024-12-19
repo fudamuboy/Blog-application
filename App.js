@@ -10,6 +10,7 @@ import Feather from '@expo/vector-icons/Feather';
 import EditPage from "./screens/EditPage";
 import Entypo from '@expo/vector-icons/Entypo';
 
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -20,7 +21,7 @@ export default function App() {
           <Stack.Screen name="Index" component={IndexPage} options={({ navigation }) => ({
             headerRight: () => (
               <TouchableOpacity onPress={() => navigation.navigate('Create')}>
-                <Entypo name="circle-with-plus" size={24} color="black" />
+                <Entypo name="plus" size={30} color="black" />
               </TouchableOpacity>
             )
           })} />

@@ -6,9 +6,8 @@ const blogReducer = (state, action) => {
         case "add_blogpost":
             return [...state, {
                 id: Math.floor(Math.random() * 999999),
-                // lions du title et contenu cree ds blogForm et ensuite pour save 
                 title: action.payload.titre,
-                content: action.payload.contenu,
+                contenu: action.payload.contenu,
             }];
 
         case "delete_blogpost":
@@ -39,8 +38,11 @@ const blogReducer = (state, action) => {
 // };
 // burasi ekleme kismindir 
 const addBlogPost = (dispatch) => {
-    return (titre, contenu) => {
+    return (titre, contenu, callback) => {
         dispatch({ type: "add_blogpost", payload: { titre, contenu } });
+        if (callback) {
+            callback();
+        }
     };
 };
 
