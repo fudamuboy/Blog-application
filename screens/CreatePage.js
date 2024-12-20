@@ -9,9 +9,11 @@ export default function CreatePage({ navigation }) {
     const { addBlogPost } = useContext(Context)
     return (
         <View>
-            <BlogForm onSubmit={(titre, contenu) => {
-                addBlogPost(titre, contenu, () => navigation.navigate('Index'))
-            }} />
+            <BlogForm
+                isEditable={false}
+                onSubmit={(title, contenu) => {
+                    addBlogPost(title, contenu, () => navigation.navigate('Index'))
+                }} />
         </View>
     )
 }

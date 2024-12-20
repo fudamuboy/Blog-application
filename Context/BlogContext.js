@@ -6,9 +6,14 @@ const blogReducer = (state, action) => {
         case "add_blogpost":
             return [...state, {
                 id: Math.floor(Math.random() * 999999),
-                title: action.payload.titre,
+                title: action.payload.title,
                 contenu: action.payload.contenu,
             }];
+        case 'edit_blogpost':
+            return state.map((blogPost) => {
+                return blogPost.id === action.payload.id ?
+                    action.payload : blogPost;
+            })
 
         case "delete_blogpost":
             return state.filter((blogPost) => blogPost.id !== action.payload)
@@ -37,15 +42,27 @@ const blogReducer = (state, action) => {
 //     // );
 // };
 // burasi ekleme kismindir 
+
+// Fonction pour ajouter un article de blog
 const addBlogPost = (dispatch) => {
-    return (titre, contenu, callback) => {
-        dispatch({ type: "add_blogpost", payload: { titre, contenu } });
+    return (title, contenu, callback) => {
+        dispatch({ type: "add_blogpost", payload: { title, contenu } });
+        if (callback) {
+            callback();
+        }
+    };
+};
+// Fonction pour modifier un article de blog
+const editBlogPost = (dispatch) => {
+    return (id, title, contenu, callback) => {
+        dispatch({ type: "edit_blogpost", payload: { id, title, contenu } });
         if (callback) {
             callback();
         }
     };
 };
 
+// Fonction pour supprimer un article de blog
 const deleteBlogPost = (dispatch) => {
     return (id) => {
         dispatch({ type: "delete_blogpost", payload: id });
@@ -54,6 +71,6 @@ const deleteBlogPost = (dispatch) => {
 // Configuration du contexte et du fournisseur
 export const { Context, Provider } = DataContext(
     blogReducer,
-    { addBlogPost, deleteBlogPost },
+    { addBlogPost, deleteBlogPost, editBlogPost },
     [] // État initial
 );

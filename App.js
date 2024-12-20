@@ -26,9 +26,9 @@ export default function App() {
             )
           })} />
           <Stack.Screen name="Create" component={CreatePage} />
-          <Stack.Screen name="Goster" component={GosterPage} options={({ navigation }) => ({
+          <Stack.Screen name="Goster" component={GosterPage} options={({ navigation, route }) => ({
             headerRight: () => (
-              <TouchableOpacity onPress={() => navigation.navigate('Edit')}>
+              <TouchableOpacity onPress={() => navigation.navigate('Edit', { id: route.params.id })}>
                 <Feather name="edit" size={24} color="black" />
               </TouchableOpacity>
             )

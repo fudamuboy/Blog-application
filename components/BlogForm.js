@@ -1,21 +1,23 @@
 import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 
-export default function BlogForm({ onSubmit }) {
-    const [titre, setTitre] = useState('')
-    const [contenu, setContenu] = useState('')
+export default function BlogForm({ onSubmit, initiaValues, isEditable }) {
+    const [title, setTitle] = useState(initiaValues ? initiaValues.title : '')
+    const [contenu, setContenu] = useState(initiaValues ? initiaValues.contenu : '')
     return (
         <View>
             <Text style={styles.titre}>Enter ur title:</Text>
             <TextInput style={styles.input} placeholder='Titre'
-                value={titre}
-                onChangeText={(text) => setTitre(text)} />
+                value={title}
+                onChangeText={(text) => setTitle(text)} />
             <Text style={styles.titre}>Enter ur content:</Text>
             <TextInput style={styles.input2} placeholder='Contenu'
                 value={contenu}
                 onChangeText={(text) => setContenu(text)} />
-            <TouchableOpacity onPress={() => onSubmit(titre, contenu)}>
-                <Text style={styles.btn} >SAVE</Text>
+            <TouchableOpacity onPress={() => onSubmit(title, contenu)}>
+                <View>
+                    {isEditable ? (<Text style={styles.btn} >UPDATE</Text>) : (<Text style={styles.btn} >SAVE</Text>)}
+                </View>
             </TouchableOpacity>
 
         </View>
