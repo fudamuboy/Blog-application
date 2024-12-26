@@ -15,3 +15,5 @@ Kullanılan Teknolojiler
     Context API: Durum yönetimi
     React Navigation: Sayfalar arası geçiş
     Expo Icons: Görsel simgeler
+# Ornek videosu 
+https://github.com/user-attachments/assets/38e6e862-86fb-42df-bb89-641b3f25e0e2
