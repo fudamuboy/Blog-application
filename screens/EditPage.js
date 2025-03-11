@@ -1,15 +1,32 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, ActivityIndicator } from 'react-native'
 import React, { useContext } from 'react'
 import { Context } from '../Context/BlogContext'
 import BlogForm from '../components/BlogForm';
 
 export default function EditPage({ navigation, route }) {
     const { state, editBlogPost } = useContext(Context);
+
+    // route.params veya id kontrolü
+    if (!route.params || !route.params.id) {
+        return (
+            <View style={styles.centered}>
+                <Text>Hata: Blog ID bulunamadı.</Text>
+            </View>
+        );
+    }
+
     const id = route.params.id;
-    console.log(route.params.id);
+    const blogPost = state.find((blogPost) => blogPost.id === id);
 
-    const blogPost = state.find((blogPost) => blogPost.id === route.params.id);
-
+    // Eğer blogPost undefined ise yüklenme göstergesi veya hata mesajı verelim
+    if (!blogPost) {
+        return (
+            <View style={styles.centered}>
+                <ActivityIndicator size="large" color="blue" />
+                <Text>Blog yükleniyor veya bulunamadı...</Text>
+            </View>
+        );
+    }
 
     return (
         <BlogForm
@@ -21,4 +38,10 @@ export default function EditPage({ navigation, route }) {
     )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    centered: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
+});

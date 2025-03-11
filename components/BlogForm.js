@@ -1,20 +1,25 @@
-import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Alert, Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 
 export default function BlogForm({ onSubmit, initiaValues, isEditable }) {
     const [title, setTitle] = useState(initiaValues ? initiaValues.title : '')
     const [contenu, setContenu] = useState(initiaValues ? initiaValues.contenu : '')
+
+    const handlePress = () => {
+        onSubmit(title, contenu)
+        Alert.alert("Başarılı", isEditable ? "Blog başarıyla güncellendi!" : "Blog başarıyla kaydedildi!")
+    }
     return (
         <View>
-            <Text style={styles.titre}>Enter ur title:</Text>
-            <TextInput style={styles.input} placeholder='Titre'
+            <Text style={styles.titre}>Başlığınızı girin:</Text>
+            <TextInput style={styles.input} placeholder='Title'
                 value={title}
                 onChangeText={(text) => setTitle(text)} />
-            <Text style={styles.titre}>Enter ur content:</Text>
-            <TextInput style={styles.input2} placeholder='Contenu'
+            <Text style={styles.titre}>Içeriğinizi giriniz:</Text>
+            <TextInput style={styles.input2} placeholder='Content'
                 value={contenu}
                 onChangeText={(text) => setContenu(text)} />
-            <TouchableOpacity onPress={() => onSubmit(title, contenu)}>
+            <TouchableOpacity onPress={handlePress}>
                 <View>
                     {isEditable ? (<Text style={styles.btn} >UPDATE</Text>) : (<Text style={styles.btn} >SAVE</Text>)}
                 </View>
@@ -44,7 +49,6 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         paddingHorizontal: 10,
         paddingVertical: 10,
-        margin: 10,
         padding: 10,
         textAlign: 'center',
         backgroundColor: 'green',

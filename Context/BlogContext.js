@@ -1,3 +1,4 @@
+import { Alert } from "react-native";
 import DataContext from "./DataContext";
 
 // Reducer pour gérer les actions du blog
@@ -66,6 +67,8 @@ const editBlogPost = (dispatch) => {
 const deleteBlogPost = (dispatch) => {
     return (id) => {
         dispatch({ type: "delete_blogpost", payload: id });
+
+        Alert.alert("Başlık", "Silindi!")
     };
 }
 // Configuration du contexte et du fournisseur

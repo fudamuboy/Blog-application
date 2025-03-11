@@ -9,6 +9,7 @@ import GosterPage from "./screens/GosterPage";
 import Feather from '@expo/vector-icons/Feather';
 import EditPage from "./screens/EditPage";
 import Entypo from '@expo/vector-icons/Entypo';
+import BlogTab from "./BlogTab";
 
 
 const Stack = createNativeStackNavigator();
@@ -17,7 +18,9 @@ export default function App() {
   return (
     <Provider>
       <NavigationContainer>
+
         <Stack.Navigator screenOptions={{ headerTitle: "Blog Uygulaması" }}>
+          {/* <Stack.Screen name="BlogTab" component={BlogTab} /> */}
           <Stack.Screen name="Index" component={IndexPage} options={({ navigation }) => ({
             headerRight: () => (
               <TouchableOpacity onPress={() => navigation.navigate('Create')}>

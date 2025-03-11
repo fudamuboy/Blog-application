@@ -3,14 +3,23 @@ import React, { useContext } from 'react'
 import { Context } from '../Context/BlogContext'
 
 export default function GosterPage({ route }) {
-
     const { state } = useContext(Context);
-    // console.log(route.params.id);
-    const blogPost = state.find((blogPost) => blogPost.id === route.params.id);
+
+    console.log("Route Params:", route.params);
+    console.log("State:", state);
+
+    const blogPost = state.find((blogPost) => blogPost.id === route.params?.id);
+
+    if (!blogPost) {
+        return (
+            <View style={styles.container}>
+                <Text style={styles.titre}>Veri bulunamadı</Text>
+            </View>
+        );
+    }
 
     return (
         <View style={styles.container}>
-
             <View style={styles.baslik}>
                 <Text style={styles.titre}>TITRE</Text>
                 <Text style={styles.titre}>{blogPost.title}</Text>
@@ -20,12 +29,9 @@ export default function GosterPage({ route }) {
                 <Text style={styles.context}>CONTENU</Text>
                 <Text style={styles.context}>{blogPost.contenu}</Text>
             </View>
-
-
         </View>
-    )
+    );
 }
-
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
