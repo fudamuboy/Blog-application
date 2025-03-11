@@ -18,15 +18,15 @@ export default function EditPage({ navigation, route }) {
     const id = route.params.id;
     const blogPost = state.find((blogPost) => blogPost.id === id);
 
-    // Eğer blogPost undefined ise yüklenme göstergesi veya hata mesajı verelim
-    if (!blogPost) {
-        return (
-            <View style={styles.centered}>
-                <ActivityIndicator size="large" color="blue" />
-                <Text>Blog yükleniyor veya bulunamadı...</Text>
-            </View>
-        );
-    }
+    // // burda bi hata mesaj verdi ki hatayi yakalayimm
+    // if (!blogPost) {
+    //     return (
+    //         <View style={styles.centered}>
+    //             <ActivityIndicator size="large" color="blue" />
+    //             <Text>Blog yükleniyor veya bulunamadı...</Text>
+    //         </View>
+    //     );
+    // }
 
     return (
         <BlogForm
