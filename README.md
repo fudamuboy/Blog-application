@@ -17,3 +17,4 @@ Kullanılan Teknolojiler
     Expo Icons: Görsel simgeler
 # Ornek videosu 
 
+https://github.com/user-attachments/assets/39c9fcf3-3dbf-4ecc-abbc-39055a86e5ac
